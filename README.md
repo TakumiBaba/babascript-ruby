@@ -14,11 +14,11 @@ Usage
 
 ### BabaScript interpreter
 
-    % babascript --help
+    % baba --help
 
 oneline
 
-    % babascript -e "月曜にかず助に行くので、出欠をとってください"
+    % baba -e "月曜にかず助に行くので、出欠をとってください"
 
 
 sample.bb
@@ -30,7 +30,7 @@ else
 end
 ```
 
-    % babascript sample.bb
+    % baba sample.bb
 
 
 ### embed BabaScript into Ruby
@@ -56,7 +56,7 @@ BabaScriptはジョブ通知に[Linda](https://gihtub.com/shokai/linda-base)を�
 
     % export BABA=shokai
 
-環境変数BABAを"shokai"に切り替えると、ジョブの通知先が http://linda.masuilab.org/shokai/notifications になります。
+環境変数BABAを"shokai"に切り替えると、以後のジョブの通知先が http://linda.masuilab.org/shokai/notifications になります。
 
 
 Contributing
