@@ -5,4 +5,4 @@ require 'babascript'
 
 code = ARGV.map{|i| i.encode("UTF-8") }.join(" ")
 puts code
-print BabaScript.instance_eval code
+print BabaScript::Baba.instance_eval code

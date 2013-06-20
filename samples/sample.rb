@@ -4,7 +4,7 @@ require 'rubygems'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'babascript'
 
-BabaScript.run do
+BabaScript.baba do
   if Time.now.hour < 12
     そろそろ起きたほうがいいのでは？
   else

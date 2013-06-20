@@ -1,5 +1,5 @@
 require "babascript/version"
-require "babascript/main"
+require "babascript/baba"
 require "httparty"
 require "json"
 
