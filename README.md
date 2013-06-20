@@ -14,6 +14,14 @@ Usage
 
 ### BabaScript interpreter
 
+    % babascript --help
+
+oneline
+
+    % babascript -e "月曜にかず助に行くので、出欠をとってください"
+
+interpreter
+
 sample.bb
 ```ruby
 if 0 < Time.now.hour and Time.now.hour < 5
@@ -22,8 +30,6 @@ else
   意識を高めろ！！
 end
 ```
-
-run
 
     % babascript sample.bb
 

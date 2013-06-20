@@ -1,3 +1,7 @@
+=== 0.0.2 2013-06-20
+
+* BabaScript interpreter
+
 === 0.0.1 2013-06-20
 
 * first release

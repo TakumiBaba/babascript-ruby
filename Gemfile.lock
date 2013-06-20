@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    babascript (0.0.1)
+    babascript (0.0.2)
       args_parser
       httparty
       json
