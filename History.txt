@@ -1,3 +1,7 @@
+=== 0.0.4 2013-06-20
+
+* rename command babascript -> baba
+
 === 0.0.3 2013-06-20
 
 * switch BABA by ENV var BABA
