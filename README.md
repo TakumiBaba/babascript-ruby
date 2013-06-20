@@ -50,6 +50,14 @@ BabaScript.baba do
 end
 ```
 
+### switch BABA
+BabaScriptはジョブ通知に[Linda](https://gihtub.com/shokai/linda-base)を使っています。
+環境変数BABAのデフォルト値は"takumibaba"で、彼のジョブは http://linda.masuilab.org/takumibaba/notifications で確認できます。
+
+    % export BABA=shokai
+
+環境変数BABAを"shokai"に切り替えると、ジョブの通知先が http://linda.masuilab.org/shokai/notifications になります。
+
 
 Contributing
 ------------
