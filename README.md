@@ -20,7 +20,6 @@ oneline
 
     % babascript -e "月曜にかず助に行くので、出欠をとってください"
 
-interpreter
 
 sample.bb
 ```ruby
