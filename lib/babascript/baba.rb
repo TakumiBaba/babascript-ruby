@@ -14,7 +14,8 @@ module BabaScript
       query = {
         :body => {:tuple => tuple.to_json}
       }
-      HTTParty.post("#{LINDA_BASE}/#{LINDA_SPACE}.write", query)
+      puts "#{BabaScript.LINDA_BASE}/#{BabaScript.LINDA_SPACE}.write"
+      HTTParty.post("#{BabaScript.LINDA_BASE}/#{BabaScript.LINDA_SPACE}.write", query)
     end
   end
 end

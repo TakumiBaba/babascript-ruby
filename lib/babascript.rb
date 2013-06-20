@@ -4,6 +4,11 @@ require "httparty"
 require "json"
 
 module BabaScript
-  LINDA_BASE  = "http://linda.masuilab.org"
-  LINDA_SPACE = "takumibaba"
+  def self.LINDA_BASE
+    ENV["LINDA_BASE"] || "http://linda.masuilab.org"
+  end
+
+  def self.LINDA_SPACE
+    ENV["BABA"] || "takumibaba"
+  end
 end
