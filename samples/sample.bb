@@ -1,4 +1,4 @@
-#!/usr/bin/env babascript
+#!/usr/bin/env baba
 
 if 0 < Time.now.hour and Time.now.hour < 5
   もう寝よう！！
