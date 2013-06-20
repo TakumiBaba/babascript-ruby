@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = BabaScript::VERSION
   spec.authors       = ["Sho Hashimoto"]
   spec.email         = ["hashimoto@shokai.org"]
-  spec.description   = %q{BabaScript is a Script Launguage which runs on @takumibaba}
+  spec.description   = %q{BabaScript is a script launguage which runs on @takumibaba}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/masuilab/babascript"
   spec.license       = "MIT"
