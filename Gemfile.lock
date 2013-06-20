@@ -1,0 +1,25 @@
+PATH
+  remote: .
+  specs:
+    babascript (0.0.1)
+      httparty
+      json
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
+    json (1.8.0)
+    multi_json (1.7.7)
+    multi_xml (0.5.4)
+    rake (10.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  babascript!
+  bundler (~> 1.3)
+  rake

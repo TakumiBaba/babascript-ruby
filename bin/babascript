@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'babascript'
+
+code = ARGV.map{|i| i.encode("UTF-8") }.join(" ")
+puts code
+print BabaScript.instance_eval code

@@ -1,0 +1,3 @@
+module BabaScript
+  VERSION = "0.0.1"
+end
