@@ -1,27 +1,35 @@
-# Babascript
+BabaScript
+==========
+BabaScript is a script language which runs on @takumibaba
 
-TODO: Write a gem description
 
-## Installation
+Installation
+------------
 
-Add this line to your application's Gemfile:
+    % gem install babascript
 
-    gem 'babascript'
 
-And then execute:
+Usage
+-----
 
-    $ bundle
+```ruby
+require 'rubygems'
+require 'babascript'
 
-Or install it yourself as:
+BabaScript.baba do
+  起きてください
+end
+```
 
-    $ gem install babascript
+```ruby
+BabaScript.baba do
+  アイス買ってきてよ("#{rand(10)}本")
+end
+```
 
-## Usage
 
-TODO: Write usage instructions here
-
-## Contributing
-
+Contributing
+------------
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
