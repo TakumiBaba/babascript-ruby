@@ -12,6 +12,24 @@ Installation
 Usage
 -----
 
+### BabaScript interpreter
+
+sample.bb
+```ruby
+if 0 < Time.now.hour and Time.now.hour < 5
+  もう寝よう！！
+else
+  意識を高めろ！！
+end
+```
+
+run
+
+    % babascript sample.bb
+
+
+### embed BabaScript into Ruby
+
 ```ruby
 require 'rubygems'
 require 'babascript'

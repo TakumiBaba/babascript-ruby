@@ -1,8 +1,27 @@
 #!/usr/bin/env ruby
 require 'rubygems'
+require 'args_parser'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'babascript'
 
-code = ARGV.map{|i| i.encode("UTF-8") }.join(" ")
-puts code
-print BabaScript::Baba.instance_eval code
+args = ArgsParser.parse ARGV do
+  arg :e, "one line of script"
+  arg :help, "show help", :alias => :h
+end
+
+if args.has_option? :help
+  STDERR.puts "BabaScript v#{BabaScript::VERSION}"
+  STDERR.puts args.help
+  exit 1
+end
+
+if args.has_param? :e
+  puts args[:e]
+  print BabaScript::Baba.instance_eval args[:e]
+else
+  args.argv.each do |fname|
+    File.open(fname) do |f|
+      BabaScript::Baba.instance_eval f.read
+    end
+  end
+end

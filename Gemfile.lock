@@ -2,12 +2,14 @@ PATH
   remote: .
   specs:
     babascript (0.0.1)
+      args_parser
       httparty
       json
 
 GEM
   remote: https://rubygems.org/
   specs:
+    args_parser (0.1.6)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
