@@ -9,9 +9,7 @@ module BabaScript
     end
 
     def self.method_missing(name, *args)
-      puts name
-      tuple = ["notifications", name, {:callback => __create_callback_id}]
-      tuple.push args unless args.empty?
+      tuple = [:babascript, :eval, name, args, {:callback => __create_callback_id}]
       query = {
         :body => {:tuple => tuple.to_json}
       }
