@@ -2,6 +2,7 @@ require "babascript/version"
 require "babascript/baba"
 require "httparty"
 require "json"
+require 'digest/md5'
 
 module BabaScript
   def self.LINDA_BASE
