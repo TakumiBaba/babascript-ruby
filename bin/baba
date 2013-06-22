@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
 require 'rubygems'
 require 'args_parser'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
@@ -6,12 +7,22 @@ require 'babascript'
 
 args = ArgsParser.parse ARGV do
   arg :e, "one line of script"
+  arg :version, "show version", :alias => :v
   arg :help, "show help", :alias => :h
 end
 
+binname = File.basename(__FILE__)
 if args.has_option? :help
   STDERR.puts "BabaScript v#{BabaScript::VERSION}"
   STDERR.puts args.help
+  STDERR.puts "e.g:"
+  STDERR.puts " % #{binname} filename.bb"
+  STDERR.puts " % #{binname} -e 'アイス買ってきてよ'"
+  exit 1
+end
+
+if args.has_option? :version
+  STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
   exit 1
 end
 
