@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+require 'rubygems'
+require 'args_parser'
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'em-rocketio-linda-client'
+
+args = ArgsParser.parse ARGV do
+  arg :version, "show version", :alias => :v
+  arg :help, "show help", :alias => :h
+end
+
+binname = File.basename(__FILE__)
+if args.has_option? :help
+  STDERR.puts "BabaScript VM  v#{BabaScript::VERSION}"
+  STDERR.puts args.help
+  exit 1
+end
+
+if args.has_option? :version
+  STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+  exit 1
+end
+
+EM::run do
+  linda = EM::RocketIO::Linda::Client.new ENV["LINDA_BASE"]
+  ts = linda.tuplespace[ENV["BABA"]]
+
+  def take_task_and_run(ts)
+    ts.take [:babascript, :eval] do |tuple|
+      loop do
+        print %Q{"#{tuple[2]}" #{tuple[3]} >}
+        line = STDIN.gets.strip
+        next if line.empty?
+        ts.write [:babascript, :return, tuple[4]["callback"], line]
+        break
+      end
+      take_task_and_run(ts)
+    end
+  end
+
+  linda.io.on :connect do
+    puts "connect (#{linda.io.type}). You are now BABA."
+    take_task_and_run(ts)
+  end
+end
