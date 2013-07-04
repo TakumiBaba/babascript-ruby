@@ -1,3 +1,7 @@
+=== 0.2.1 2013-07-04
+
+* fix baba-vm
+
 === 0.2.0 2013-07-04
 
 * get return value from Baba
