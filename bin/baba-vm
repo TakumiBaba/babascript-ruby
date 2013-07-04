@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'args_parser'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
-require 'em-rocketio-linda-client'
+require 'babascript'
 
 args = ArgsParser.parse ARGV do
   arg :version, "show version", :alias => :v
@@ -23,8 +23,8 @@ if args.has_option? :version
 end
 
 EM::run do
-  linda = EM::RocketIO::Linda::Client.new ENV["LINDA_BASE"]
-  ts = linda.tuplespace[ENV["BABA"]]
+  linda = EM::RocketIO::Linda::Client.new BabaScript.LINDA_BASE
+  ts = linda.tuplespace[ BabaScript.LINDA_SPACE ]
 
   def take_task_and_run(ts)
     ts.take [:babascript, :eval] do |tuple|
