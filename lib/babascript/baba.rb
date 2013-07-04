@@ -15,6 +15,9 @@ module BabaScript
         linda.io.on :connect do
           EM::defer do
             ::BabaScript::Baba.instance_eval block_or_code
+            EM::add_timer 1 do
+              EM::stop
+            end
           end
         end
       end
