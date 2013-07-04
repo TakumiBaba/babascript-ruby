@@ -1,6 +1,6 @@
 module BabaScript
   def self.baba(&block)
-    self::Baba.run(&block)
+    self::Baba.run &block if block_given?
   end
 
   class Baba
@@ -9,12 +9,16 @@ module BabaScript
       @@linda ||= EM::RocketIO::Linda::Client.new BabaScript.LINDA_BASE
     end
 
-    def self.run(block_or_code)
-      raise ArgumentError "block or code require" unless [Proc, String].include? block_or_code.class
+    def self.run(code=nil, &block)
+      raise ArgumentError "block or code require" unless block_given? or code.kind_of? String
       EM::run do
-        linda.io.on :connect do
+        linda.io.once :connect do
           EM::defer do
-            ::BabaScript::Baba.instance_eval block_or_code
+            if block_given?
+              ::BabaScript::Baba.instance_eval &block
+            else
+              ::BabaScript::Baba.instance_eval code
+            end
             EM::add_timer 1 do
               EM::stop
             end

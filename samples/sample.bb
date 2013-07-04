@@ -6,7 +6,7 @@ puts res # => "6人です"
 loop do
   num = res.to_i
   if num > 0
-    では予約してください("#{num}人")
+    puts では予約してください("#{num}人")
     exit
   else
     res = 残念・・その次の週はどうですか？

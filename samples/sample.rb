@@ -6,8 +6,8 @@ require 'babascript'
 
 BabaScript.baba do
   if Time.now.hour < 12
-    そろそろ起きたほうがいいのでは？
+    puts そろそろ起きたほうがいいのでは？
   else
-    アイス買ってきてよ("#{rand(10)}本")
+    puts アイス買ってきてよ("#{rand(10)}本")
   end
 end
