@@ -32,7 +32,7 @@ if args.has_param? :e
 else
   args.argv.each do |fname|
     File.open(fname) do |f|
-      BabaScript::Baba.instance_eval f.read
+      BabaScript::Baba.run f.read
     end
   end
 end

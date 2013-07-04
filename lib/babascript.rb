@@ -1,6 +1,7 @@
 require "babascript/version"
 require "babascript/baba"
-require "httparty"
+require "eventmachine"
+require "em-rocketio-linda-client"
 require "json"
 require 'digest/md5'
 
