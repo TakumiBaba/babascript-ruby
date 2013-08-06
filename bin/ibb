@@ -1,14 +1,17 @@
-#! /usr/bin/env bash
+#!/usr/bin/env ruby
+require 'rubygems'
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'babascript'
 
-echo "
-require('babascript')
-require('irb') 
-STDOUT.puts('Interactive BaBa') 
-def self.method_missing(name, *args)
-	BabaScript.baba do 
-		puts self.send(name, args)
-	end	  
+BabaScript.baba do
+  STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+  print "[IBB] > "
+  while line = STDIN.gets do
+    line.strip!
+    unless line.empty?
+      puts "(waiting response)"
+      p instance_eval line
+    end
+    print "[IBB] > "
+  end
 end
-IRB.conf[:IRB_NAME] = 'ibb' " > .babarc.rb
-irb -r ./.babarc.rb
-rm .babarc.rb
