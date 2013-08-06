@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+echo "
+require('babascript')
+require('irb') 
+STDOUT.puts('Interactive BaBa') 
+def self.method_missing(name, *args)
+	BabaScript.baba do 
+		puts self.send(name, args)
+	end	  
+end
+IRB.conf[:IRB_NAME] = 'ibb' " > .babarc.rb
+irb -r ./.babarc.rb
+rm .babarc.rb
