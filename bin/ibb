@@ -2,6 +2,7 @@
 require 'rubygems'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'babascript'
+load "#{ENV['HOME']}/.ibbrc" if File.exists? "#{ENV['HOME']}/.ibbrc"
 
 BabaScript.baba do
   STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
