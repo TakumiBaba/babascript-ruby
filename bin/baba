@@ -28,7 +28,9 @@ end
 
 if args.has_param? :e
   puts args[:e]
-  puts BabaScript::Baba.instance_eval args[:e]
+  BabaScript.baba do
+    puts instance_eval args[:e]
+  end
 else
   args.argv.each do |fname|
     File.open(fname) do |f|
