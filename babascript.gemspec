@@ -6,8 +6,8 @@ require 'babascript/version'
 Gem::Specification.new do |spec|
   spec.name          = "babascript"
   spec.version       = BabaScript::VERSION
-  spec.authors       = ["Sho Hashimoto"]
-  spec.email         = ["hashimoto@shokai.org"]
+  spec.authors       = ["Sho Hashimoto", "Takumi Baba"]
+  spec.email         = ["hashimoto@shokai.org", "contact@mail.takumibaba.com"]
   spec.description   = %q{BabaScript is a script launguage which runs on @takumibaba}
   spec.summary       = spec.description
   spec.homepage      = "https://github.com/masuilab/babascript"
