@@ -22,6 +22,8 @@ if args.has_option? :version
   exit 1
 end
 
+STDERR.puts "(connecting..)"
+
 EM::run do
   linda = EM::RocketIO::Linda::Client.new BabaScript.LINDA_BASE
   ts = linda.tuplespace[ BabaScript.LINDA_SPACE ]
@@ -29,7 +31,7 @@ EM::run do
   def take_task_and_run(ts)
     ts.take [:babascript, :eval] do |tuple|
       loop do
-        print %Q{"#{tuple[2]}" #{tuple[3]} >}
+        print %Q{#{tuple[2]}(#{tuple[3].join(', ')}) >}
         line = STDIN.gets.strip
         next if line.empty?
         ts.write [:babascript, :return, tuple[4]["callback"], line]
@@ -40,7 +42,11 @@ EM::run do
   end
 
   linda.io.on :connect do
-    puts "connect (#{linda.io.type}). You are now BABA."
+    STDERR.puts "(#{type} connect! You are now BABA.)"
     take_task_and_run(ts)
+  end
+
+  linda.io.on :disconnect do
+    STDERR.puts "(#{type} closed)"
   end
 end
