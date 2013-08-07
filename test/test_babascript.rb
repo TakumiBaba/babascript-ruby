@@ -7,12 +7,14 @@ class TestBabaScript < MiniTest::Test
 
   def test_eval_write_tuple
     tuple_ = nil
+    res_ = nil
     EM::run do
       linda = EM::RocketIO::Linda::Client.new BabaScript.LINDA_BASE
       ts = linda.tuplespace[ BabaScript.LINDA_SPACE ]
       linda.io.once :connect do
         ts.take [:babascript, :eval] do |tuple|
           tuple_ = tuple
+          ts.write [:babascript, :return, tuple[4]["callback"], "ざんまい"]
           EM::add_timer 1 do
             EM::stop
           end
@@ -20,7 +22,7 @@ class TestBabaScript < MiniTest::Test
       end
 
       BabaScript.baba do
-        テスト 1, 2, "かずすけ"
+        res_ = テスト 1, 2, "かずすけ"
       end
     end
 
@@ -32,6 +34,8 @@ class TestBabaScript < MiniTest::Test
     assert_equal tuple_[3], [1, 2, "かずすけ"]
     assert_equal tuple_[4].class, Hash
     assert tuple_[4].has_key? "callback"
+
+    assert_equal res_, "ざんまい"
   end
 
 end
