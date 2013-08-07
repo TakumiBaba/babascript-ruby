@@ -1,10 +1,28 @@
 #!/usr/bin/env ruby
 require 'rubygems'
+require 'args_parser'
 $:.unshift File.expand_path '../lib', File.dirname(__FILE__)
 require 'babascript'
 load "#{ENV['HOME']}/.ibbrc" if File.exists? "#{ENV['HOME']}/.ibbrc"
 
-STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+args = ArgsParser.parse ARGV do
+  arg :version, "show version", :alias => :v
+  arg :help, "show help", :alias => :h
+end
+
+
+binname = File.basename(__FILE__)
+if args.has_option? :help
+  STDERR.puts "Interactive BabaScript  v#{BabaScript::VERSION}"
+  STDERR.puts args.help
+  exit 1
+end
+
+if args.has_option? :version
+  STDERR.puts "Interactive BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+  exit 1
+end
+
 STDERR.puts "(connecting..)"
 
 EM::run do
