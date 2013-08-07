@@ -11,6 +11,7 @@ module BabaScript
 
     def self.run(code=nil, &block)
       raise ArgumentError "block or code require" unless block_given? or code.kind_of? String
+      already_eventmachine_running = EM::reactor_running?
       EM::run do
         linda.io.once :connect do
           EM::defer do
@@ -19,8 +20,10 @@ module BabaScript
             else
               ::BabaScript::Baba.instance_eval code
             end
-            EM::add_timer 1 do
-              EM::stop
+            unless already_eventmachine_running
+              EM::add_timer 1 do
+                EM::stop
+              end
             end
           end
         end
