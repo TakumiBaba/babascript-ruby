@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    babascript (0.2.3)
+    babascript (0.2.4)
       args_parser
       em-rocketio-linda-client
       json

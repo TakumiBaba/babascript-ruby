@@ -1,3 +1,7 @@
+=== 0.2.4 2013-08-07
+
+* not stop EventMachine if it's already running.
+
 === 0.2.3 2013-08-07
 
 * show Linda connection status on ibb and baba-vm
