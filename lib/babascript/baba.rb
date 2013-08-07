@@ -28,6 +28,10 @@ module BabaScript
     end
 
     def self.method_missing(name, *args)
+      self.exec name, *args
+    end
+
+    def self.exec(name, *args)
       cid = __create_callback_id
       tuple = [:babascript, :eval, name, args, {:callback => cid}]
       ts = linda.tuplespace[BabaScript.LINDA_SPACE]

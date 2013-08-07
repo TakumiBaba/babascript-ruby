@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    babascript (0.2.1)
+    babascript (0.2.3)
       args_parser
       em-rocketio-linda-client
       json
@@ -23,7 +23,7 @@ GEM
       em-socksify (>= 0.3)
       eventmachine (>= 1.0.3)
       http_parser.rb (>= 0.6.0.beta.2)
-    em-rocketio-client (0.1.1)
+    em-rocketio-client (0.1.2)
       em-cometio-client
       em-http-request
       em-websocketio-client
@@ -38,7 +38,7 @@ GEM
     em-websocket-client (0.1.1)
       eventmachine
       libwebsocket
-    em-websocketio-client (0.0.2)
+    em-websocketio-client (0.0.3)
       em-websocket-client
       event_emitter
       eventmachine
