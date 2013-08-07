@@ -59,6 +59,14 @@ BabaScriptはジョブ通知に[Linda](https://gihtub.com/shokai/linda-base)を�
 環境変数BABAを"shokai"に切り替えると、以後のジョブの通知先が http://linda.masuilab.org/shokai/notifications になります。
 
 
+Test
+----
+
+    % gem install bundler
+    % bundle install
+    % bundle exec rake test
+
+
 Contributing
 ------------
 1. Fork it
