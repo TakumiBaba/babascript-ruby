@@ -18,7 +18,7 @@ if args.has_option? :help
 end
 
 if args.has_option? :version
-  STDERR.puts "BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+  STDERR.puts "BabaScript VM v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
   exit 1
 end
 
