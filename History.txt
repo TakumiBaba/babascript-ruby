@@ -1,3 +1,8 @@
+=== 0.2.2 2013-08-07
+
+* add ibb command
+* bugfix baba command
+
 === 0.2.1 2013-07-04
 
 * fix baba-vm

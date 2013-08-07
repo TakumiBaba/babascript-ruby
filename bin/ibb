@@ -1,5 +1,50 @@
-#! /usr/bin/env bash
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'args_parser'
+$:.unshift File.expand_path '../lib', File.dirname(__FILE__)
+require 'babascript'
+load "#{ENV['HOME']}/.ibbrc" if File.exists? "#{ENV['HOME']}/.ibbrc"
 
-echo "require('babascript'); require('irb'); STDOUT.puts('Interactive BaBa'); IRB.conf[:IRB_NAME] = 'ibb' " > .babarc.rb
-irb -r ./.babarc.rb
-rm .babarc.rb
+args = ArgsParser.parse ARGV do
+  arg :version, "show version", :alias => :v
+  arg :help, "show help", :alias => :h
+end
+
+
+binname = File.basename(__FILE__)
+if args.has_option? :help
+  STDERR.puts "Interactive BabaScript  v#{BabaScript::VERSION}"
+  STDERR.puts args.help
+  exit 1
+end
+
+if args.has_option? :version
+  STDERR.puts "Interactive BabaScript v#{BabaScript::VERSION} - ruby #{RUBY_VERSION}-p#{RUBY_PATCHLEVEL} (#{RUBY_RELEASE_DATE}) [#{RUBY_PLATFORM}]"
+  exit 1
+end
+
+STDERR.puts "(connecting..)"
+
+EM::run do
+  BabaScript::Baba.linda.io.on :connect do
+    STDERR.puts "(#{type} connect!)"
+  end
+
+  BabaScript::Baba.linda.io.on :disconnect do
+    STDERR.puts
+    STDERR.puts "(#{type} closed)"
+  end
+
+  BabaScript.baba do
+    print "[IBB] > "
+    while line = STDIN.gets do
+      line.strip!
+      unless line.empty?
+        STDERR.puts "(waiting response)"
+        p instance_eval line
+      end
+      print "[IBB] > "
+    end
+  end
+end
+>>>>>>> 25d08f490a93380037ecb3885a00ccd5ebeaacda
