@@ -62,8 +62,23 @@ BabaScriptはジョブ通知に[Linda](https://gihtub.com/shokai/linda-base)を�
 Test
 ----
 
+### Install Dependencies
+
     % gem install bundler
     % bundle install
+
+### Manual Test
+
+Start VM
+
+    % BABA=test bundle exec bin/baba-vm
+
+Run samples
+
+    % BABA=test bundle exec ruby samples/sample.rb
+
+### Unit Test
+
     % bundle exec rake test
 
 
