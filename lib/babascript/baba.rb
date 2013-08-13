@@ -30,17 +30,20 @@ module BabaScript
       end
     end
 
-    def self.method_missing(name, *args)
-      self.exec name, *args
-    end
-
-    def self.exec(name, *args)
+    def self.method_missing(name, *args, &block)
       cid = __create_callback_id
       tuple = [:babascript, :eval, name, args, {:callback => cid}]
       ts = linda.tuplespace[BabaScript.LINDA_SPACE]
       ts.write tuple
-      result = ts.take [:babascript, :return, cid]
-      return result[3]
+      if block_given?
+        ts.take [:babascript, :return, cid] do |result|
+          next if result.size < 4
+          block.call result[3]
+        end
+      else
+        result = ts.take [:babascript, :return, cid]
+        return result[3]
+      end
     end
 
     private
