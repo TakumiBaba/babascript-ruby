@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["hashimoto@shokai.org", "contact@mail.takumibaba.com"]
   spec.description   = %q{BabaScript is a script launguage which runs on @takumibaba}
   spec.summary       = spec.description
-  spec.homepage      = "https://github.com/masuilab/babascript"
+  spec.homepage      = "https://github.com/takumibaba/babascript"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/).reject{|i| i=="Gemfile.lock" }
@@ -18,11 +18,11 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "em-rocketio-linda-client"
+  spec.add_dependency "faraday"
   spec.add_dependency "json"
   spec.add_dependency "args_parser"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "minitest"
+  spec.add_development_dependency "bundler", "~> 1.13"
+  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
 end
